@@ -1,12 +1,17 @@
-var express = require('express');
- var app = express();
- 
- app.use(express.static('ui'));
- 
- app.get('/', function (req, res) {
-   res.sendFile('./ui/index.html');
- });
- 
- app.listen(80, function () {
-  console.log('IMAD course app listening on port 80!');
- });
+var http = require("http");
+var server = http.createServer(function(request, response) {
+  response.writeHead(200, {"Content-Type": "text/html"});
+  response.write("<!DOCTYPE "html">");
+  response.write("<html>");
+  response.write("<head>");
+  response.write("<title>Hello World Page</title>");
+  response.write("</head>");
+  response.write("<body>");
+  response.write("Hello World!");
+  response.write("</body>");
+  response.write("</html>");
+  response.end();
+});
+
+server.listen(80);
+console.log("Server is listening");
